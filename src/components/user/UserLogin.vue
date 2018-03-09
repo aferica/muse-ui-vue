@@ -56,7 +56,7 @@ export default {
     getCaptcha() {
       let url = this.GLOBAL.ALLAPI.user.captcha
       axios.get(url).then(res => {
-        console.log(res)
+        // console.log(res)
         if(res.data.code == 0) {
           this.captchaCode = res.data.data.text;
           this.captchaSrc = res.data.data.img;
@@ -69,7 +69,7 @@ export default {
         axios.post(this.GLOBAL.ALLAPI.user.login,
           {name: this.username, password: md5(this.password)}
         ).then(res => {
-          console.log(res)
+          // console.log(res)
           if(res.data.code == 0) {
             this.showToast()
             this.$router.push({ path:'/main'})

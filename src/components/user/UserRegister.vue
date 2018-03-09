@@ -62,7 +62,7 @@ export default {
     getCaptcha() {
       let url = this.GLOBAL.ALLAPI.user.captcha
       axios.get(url).then(res => {
-        console.log(res)
+        // console.log(res)
         if(res.data.code == 0) {
           this.captchaCode = res.data.data.text;
           this.captchaSrc = res.data.data.img;
@@ -80,7 +80,7 @@ export default {
             invitation_code_other: this.phone,
           }
         ).then(res => {
-          console.log(res)
+          // console.log(res)
           if(res.data.code == 0) {
             this.dialog = true;
             this.dialogText = '恭喜您，注册成功！系统将自动跳转回主页面 '

@@ -125,11 +125,11 @@ export default {
     getImagesInfo() {
       let url = this.GLOBAL.ALLAPI.photo.getPictureByTagsAnd
       axios.get(url + '?tags=性感,美臀').then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         if(!res.data.code) {
           // this.firstFiveBooks = res.data.ranking.books.slice(0, 5)
           this.xingganImages = res.data.data
-        console.log(res.data.data)
+          // console.log(res.data.data)
         }
       })
       axios.get(url + '?tags=清纯').then(res => {

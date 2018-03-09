@@ -65,12 +65,12 @@ export default {
         // console.log(res)
         if(res.data.code == 0) {
           this.images = res.data.data;
-          console.log(this.images)
+          // console.log(this.images)
         }
       })
     },
     handleChange() {
-      console.log(111111)
+      // console.log(111111)
     },
     changeTag(tag) {
       this.selectTagTitle = tag.title;
@@ -79,7 +79,6 @@ export default {
     },
 
     handleResize() {
-      console.log(this.GLOBAL.getWidth());
       this.isDesktop = this.GLOBAL.getWidth();
     },
 

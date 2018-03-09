@@ -1,12 +1,17 @@
 <template>
   <div id='meizituinfo'>
     <div class="list-container">
-      <mu-grid-list class="girllist">
-        <mu-sub-header>{{title}}</mu-sub-header>
-        <mu-grid-tile class="girlitem" v-for="tile, index in images" :key="index" :rows="2" :cols="2">
-          <img :src="tile"/>
-        </mu-grid-tile>
-      </mu-grid-list>
+      <mu-card class="infoCard">
+        <mu-card-header>
+          <h3>{{title}}</h3>
+        </mu-card-header>
+        <div v-for="item in images" :key="item" >
+          <mu-list-item>
+            <img :src="staticUrl + item" >
+          </mu-list-item>
+          <mu-divider/>
+        </div>
+      </mu-card>
     </div>
   </div>
 </template>
@@ -22,6 +27,7 @@ export default {
       isDesktop: this.GLOBAL.getWidth(),
       images: [],
       title: "",
+      staticUrl: this.GLOBAL.ALLAPI.IMGAPI,
     }
   },
 
@@ -37,11 +43,11 @@ export default {
 
   methods: {
     getImagesByPid() {
-      console.log(this.$route.query)
-      console.log(this.$router)
+      // console.log(this.$route.query)
+      // console.log(this.$router)
       let getImagesUrl = 'https://www.aferica.wang/api/meizitu/detail?pid=' + this.$route.query.pid;
       axios.get(getImagesUrl).then(res => {
-        console.log(res)
+        // console.log(res)
         if(res.data.code == 0) {
           this.images = res.data.data.imgList;
           this.title = res.data.title;
@@ -50,7 +56,7 @@ export default {
     },
 
     handleResize() {
-      console.log(this.GLOBAL.getWidth());
+      // console.log(this.GLOBAL.getWidth());
       this.isDesktop = this.GLOBAL.getWidth();
     },
 
@@ -59,11 +65,15 @@ export default {
 </script>
 
 <style scoped>
-
-  img {
-    /* width: 100%; */
-    height: 100%;
+  .infoCard {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
   }
 
+  img {
+    width: 100%;
+  }
 
 </style>
