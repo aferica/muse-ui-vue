@@ -6,7 +6,7 @@ import Meizitu from '@/pages/other/Meizitu'
 import MeizituInfo from '@/pages/other/MeizituInfo'
 import Login from '@/pages/user/Login'
 import Register from '@/pages/user/Register'
-
+import BookInfo from '@/pages/book/BookInfo.vue'
 import ImageInfo from '@/pages/image/ImageInfo'
 
 Vue.use(Router)
@@ -19,6 +19,7 @@ export default new Router({
     { path: '/book/cate', name: '小说-分类', component: MyMain },
     { path: '/book/love', name: '小说-收藏', component: MyMain },
     { path: '/book/list', name: '小说-书单', component: MyMain },
+    { path: '/book/info/:_id', name: '小说-详情', component: BookInfo },
     { path: '/image/rank', name: '图片-排行', component: MyMain },
     { path: '/image/cate', name: '图片-分类', component: MyMain },
     { path: '/image/love', name: '图片-收藏', component: MyMain },

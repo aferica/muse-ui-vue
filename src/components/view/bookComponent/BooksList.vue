@@ -5,8 +5,10 @@
         <mu-sub-header>{{title}}</mu-sub-header>
         <hr/>
         <div v-for="item in booksArray" :key="item._id">
+          <router-link :to="'/book/info/'+item._id">
           <mu-list-item  class="listTitle"  :title="item.title" :afterText="item.author">
           </mu-list-item>
+          </router-link>
         <mu-divider/>
         </div>
       </mu-list>
