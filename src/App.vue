@@ -3,13 +3,6 @@
     <mu-appbar v-if="!isHomePage" :zDepth="0" :title="title === 'index' ? '' : title" class="example-appbar" :class="{'nav-hide': !open}">
       <mu-icon-button @click="toggleNav" icon="menu" slot="left"/>
       <mu-switch label="开关" slot="right" class="demo-switch" />
-      <!-- <mu-icon-button slot="right" href="https://github.com/museui/muse-ui" icon="account">
-      </mu-icon-button> -->
-      <!-- <mu-icon-menu slot="right"  icon="more_vert"  @change="handleUserMenuChange" :value="menuVal" >
-        <mu-menu-item title="登录" leftIcon="account_circle" value="#/user/login"/>
-        <mu-menu-item title="注册" leftIcon="person_add" value="#/user/register"/>
-        <mu-menu-item title="注销" leftIcon="power_settings_new" value="#/user/register"/>
-      </mu-icon-menu> -->
     </mu-appbar>
     <app-nav v-if="!isHomePage" @change="handleMenuChange" @close="toggleNav" :open="open" :docked="docked" />
     <div class="example-content" :class="{'nav-hide': !open, 'home-page': isHomePage}">
@@ -112,6 +105,7 @@ function isDesktop () {
   right: 0;
   top: 0;
   width: auto;
+  z-index: 100;
   // transition: all .45s @easeOutFunction;
   &.nav-hide {
     left: 0;

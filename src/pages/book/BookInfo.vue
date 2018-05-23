@@ -23,7 +23,7 @@
               <mu-col width="0" desktop="40"></mu-col>
             </mu-row>
             <span class="rate">评分：{{score}}</span><br/>
-            <mu-raised-button class="demo-raised-button" label="开始阅读" secondary/>
+            <mu-raised-button class="myButton demo-raised-button" label="开始阅读" />
           </mu-col>
           <mu-divider/><br/>
           <pre>{{longIntro}}</pre>
@@ -37,16 +37,25 @@
       </mu-tabs>
       <div v-if="activeTab === 'tab1'">
         <mu-row gutter class="allChapters">
-          <mu-col width="100" desktop="50" v-for="item in allChapters" :key="item.title">
+          <mu-col class="chapterList" width="100" desktop="50" v-for="item in allChapters" :key="item.title">
             <span class="chapter">{{item.title}}</span>
             <mu-divider/>
           </mu-col>
         </mu-row>
       </div>
       <div v-if="activeTab === 'tab2'">
-        <p>
-          这是第二个 tab
-        </p>
+        <mu-list class="commentInfo">
+          <div v-for="item in comments"  :key="item._id">
+            <mu-list-item  :title="item.title" >
+              <mu-avatar :src="staticCover + item.author.avatar" slot="leftAvatar"/>
+              <p></p>
+              <pre>
+                {{item.content}}
+              </pre>
+            </mu-list-item>
+            <mu-divider inset/>
+          </div>
+        </mu-list>
       </div>
     </mu-card>
   </div>
@@ -61,6 +70,7 @@ export default {
       activeTab: 'tab1',
       bookInfo: [],
       allChapters: [],
+      comments: [],
       staticUrl: this.GLOBAL.ALLAPI.IMGAPI,
       staticCover: this.GLOBAL.ALLAPI.static,
       score: '--',
@@ -70,6 +80,7 @@ export default {
   mounted() {
     this.getBookInfo()
     this.getBookAllChapters()
+    this.getBookComment()
   },
   methods: {
     getBookInfo() {
@@ -93,6 +104,16 @@ export default {
         console.log(res.data)
         if(res.data.ok) {
           this.allChapters = res.data.mixToc.chapters
+        }
+      })
+    },
+    getBookComment() {
+      let url = this.GLOBAL.ALLAPI.API
+      let bookUrl = this.GLOBAL.ALLAPI.comment.commentInfo + '?book=' + this.$route.params._id + '&sort=comment-count&limit=50'
+      axios.get(url + encodeURIComponent(bookUrl)).then(res => {
+        console.log(res.data)
+        if(res.data.ok) {
+          this.comments = res.data.reviews
         }
       })
     }
@@ -161,8 +182,22 @@ export default {
     padding: 1em;
   }
 
+  .allChapters {
+    margin-top: 1.5em;
+  }
+
+  .chapterList {
+    height: 2.5em;
+  }
+
   .chapter {
     height: 2em;
+    color: #696969;
+    font-family: 'PingFangSC Regular','HelveticaNeue Light','Helvetica Neue Light','Microsoft YaHei',sans-serif;
+  }
 
+  .myButton {
+    border-color: coral;
+    color: coral;
   }
 </style>
