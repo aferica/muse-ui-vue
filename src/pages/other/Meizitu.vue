@@ -51,7 +51,7 @@ export default {
 
   methods: {
     getMeizituTags() {
-      let getTagUrl = 'https://www.aferica.wang/api/meizitu/tags';
+      let getTagUrl = 'https://www.aferica.wang/api/other/meizitu/tags';
       axios.get(getTagUrl).then(res => {
         if(res.data.code == 0) {
           // console.log(res.data.data)
@@ -60,7 +60,8 @@ export default {
       })
     },
     getImagesByTag() {
-      let getImagesUrl = 'https://www.aferica.wang/api/meizitu/girls?tag=' + this.selectTag + '&page=1';
+      let getImagesUrl = 'http://127.0.0.1:3000/api/other/meizitu/meinv/' +  encodeURIComponent(this.selectTag) + '/1';
+      // console.log(getImagesUrl)
       axios.get(getImagesUrl).then(res => {
         // console.log(res)
         if(res.data.code == 0) {

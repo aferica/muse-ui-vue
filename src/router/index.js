@@ -25,7 +25,7 @@ export default new Router({
     { path: '/image/love', name: '图片-收藏', component: MyMain },
     { path: '/image/info/:_id', name: '图片-展示', component: ImageInfo },
     { path: '/other/Meizitu', name: '妹子图', component: Meizitu },
-    { path: '/other/meizituinfo', name: '妹子图', component: MeizituInfo, props: true },
+    { path: '/other/meizituinfo', name: '妹子图-详情', component: MeizituInfo, props: true },
     { path: '/user/login', name: '登录', component: Login },
     { path: '/user/register', name: '注册', component: Register },
   ]

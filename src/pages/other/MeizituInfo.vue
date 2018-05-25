@@ -45,7 +45,7 @@ export default {
     getImagesByPid() {
       // console.log(this.$route.query)
       // console.log(this.$router)
-      let getImagesUrl = 'https://www.aferica.wang/api/meizitu/detail?pid=' + this.$route.query.pid;
+      let getImagesUrl = 'https://www.aferica.wang/api/other/meizitu/detail/' + this.$route.query.pid;
       axios.get(getImagesUrl).then(res => {
         // console.log(res)
         if(res.data.code == 0) {
