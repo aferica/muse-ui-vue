@@ -5,12 +5,14 @@
         <mu-card-header>
           <h3>{{title}}</h3>
         </mu-card-header>
-        <div v-for="item in images" :key="item" >
-          <mu-list-item>
-            <img :src="staticUrl + item" >
-          </mu-list-item>
-          <mu-divider/>
-        </div>
+        <!-- <div v-lazy-container="{ selector: 'img' }"> -->
+          <div v-for="item in images" :key="item" >
+            <!-- <mu-list-item> -->
+              <img v-lazy="staticUrl + item" >
+            <!-- </mu-list-item> -->
+            <!-- <mu-divider/> -->
+          </div>
+        <!-- </div> -->
       </mu-card>
     </div>
   </div>

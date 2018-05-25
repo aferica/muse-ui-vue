@@ -78,5 +78,10 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  externals: {
+    vue: 'Vue',
+    'axios':'axios',
+    'vue-lazyload': 'vue-lazyload',
+  },
 }

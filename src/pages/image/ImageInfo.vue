@@ -10,10 +10,7 @@
         </mu-chip>
       </div>
       <div v-for="item in imageInfo.image_url" :key="item" >
-        <mu-list-item>
-          <img :src="staticUrl + item" >
-        </mu-list-item>
-        <mu-divider/>
+        <img v-lazy="staticUrl + item" >
       </div>
     </mu-card>
   </div>
