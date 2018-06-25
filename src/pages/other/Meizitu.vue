@@ -60,7 +60,7 @@ export default {
       })
     },
     getImagesByTag() {
-      let getImagesUrl = 'http://127.0.0.1:3000/api/other/meizitu/meinv/' +  encodeURIComponent(this.selectTag) + '/1';
+      let getImagesUrl = 'https://www.aferica.wang/api/other/meizitu/meinv/' +  encodeURIComponent(this.selectTag) + '/1';
       // console.log(getImagesUrl)
       axios.get(getImagesUrl).then(res => {
         // console.log(res)
