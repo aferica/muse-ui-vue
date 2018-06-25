@@ -60,8 +60,8 @@ export default {
       })
     },
     getImagesByTag() {
-      let getImagesUrl = 'https://www.aferica.wang/api/other/meizitu/meinv/' +  encodeURIComponent(this.selectTag) + '/1';
-      // console.log(getImagesUrl)
+      let getImagesUrl = 'https://www.aferica.wang/api/other/meizitu/meinv/' +  encodeURIComponent(encodeURIComponent(this.selectTag)) + '/1';
+      console.log(getImagesUrl)
       axios.get(getImagesUrl).then(res => {
         // console.log(res)
         if(res.data.code == 0) {
